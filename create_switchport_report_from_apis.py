@@ -34,8 +34,9 @@ try:
     switchportdata = json.loads(obj)
 
     f = csv.writer(open(CSV_FILE_NAME, "wb+"))
+    f.writerow(['Switch Name', 'Port Name', 'MAC Addresses', 'Devices'])
     for key,value in  switchportdata.iteritems():
         for i in value:
-            f.writerow([i['switch']['name'], i['port'], i['devices']])
+            f.writerow([i['switch']['name'], i['port'], i['macs'], i['devices']])
 
 except Exception, s: print str(s)
