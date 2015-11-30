@@ -35,9 +35,8 @@ try:
 
     f = csv.writer(open(CSV_FILE_NAME, "wb+"))
     f.writerow(['Name', 'CPU Count','Cores', 'CPU Speed', 'Memory', 'Hardware'])
-    for key,value in  switchportdata.iteritems():
-        for i in value:
-            f.writerow([i['name'], i.get('cpucore',''), i.get('cpucount',''), i.get('cpuspeed',''), i.get('ram',''), i.get('hw_model',''), i.get('os','')])
+    for device in switchportdata['Devices']:
+        f.writerow([device['name'], device['cpucore'], device['cpucount'], device['cpuspeed'], device['ram'], device['hw_model'], device['os']])
 
-except Exception, s: print str(s)
-
+except Exception, s: 
+    print str(s)        
